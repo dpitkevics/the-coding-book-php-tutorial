@@ -13,14 +13,26 @@ function createCar(int $id = null): array
     }
 
     $car = [
-        'id' => $id, // remember to add a trailing comma for the last element of array
+        'id' => $id,
+        'position' => [
+            'x' => 0,
+            'y' => 0,
+        ], // remember to add a trailing comma for the last element of array
     ];
 
     return $car;
 }
 
-$carOne = createCar();
-$carTwo = createCar(5);
+/**
+ * @param array $car
+ */
+function driveCar(array &$car): void
+{
+    $car['position']['x'] += 1;
+    $car['position']['y'] += 2;
+}
 
-var_dump($carOne); // `var_dump` is a function that prints any variable to screen. This function is used for debugging purposes
-var_dump($carTwo);
+$car = createCar(); // we create a car
+driveCar($car); // we drive that car
+
+var_dump($car);
